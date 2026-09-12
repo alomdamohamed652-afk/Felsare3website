@@ -11,3 +11,58 @@
 .announcement{display:flex;justify-content:center;align-items:center;gap:10px;padding:13px 24px;background:rgba(255,138,0,.07);border-top:1px solid rgba(255,138,0,.12);border-bottom:1px solid rgba(255,138,0,.12);color:#d6d0ca}.announcement p{margin:0;font-size:13px}.announcement span{color:var(--orange)}
 
 .service-area{display:flex;justify-content:center;align-items:center;gap:8px;padding:16px 24px;background:#0d0d0d;border-bottom:1px solid var(--line);color:var(--muted);font-size:14px}.service-area svg{width:18px;color:var(--orange)}.service-area b{color:#eee}.social-list{display:flex;gap:10px;flex-wrap:wrap}.social-list a{padding:11px 16px;border:1px solid var(--line);border-radius:10px;background:#121212;color:#ddd}.social-list a:hover{border-color:rgba(255,138,0,.45);color:var(--orange)}
+
+
+/***** Mobile polish: prevents the desktop header/layout from appearing on phones *****/
+@media (max-width: 900px){
+  .nav{
+    height:64px;
+    min-height:64px;
+    padding:0 16px;
+    gap:12px;
+  }
+  .brand{font-size:18px;gap:7px;white-space:nowrap}
+  .brand-mark{width:32px;height:32px;border-radius:9px}
+  .nav > nav{display:none !important}
+  .nav-actions{margin-inline-start:auto}
+  .nav-actions .call-mini{display:none !important}
+  .menu{display:grid !important;place-items:center;width:42px;height:42px}
+  .mobile-nav{top:64px;box-shadow:0 16px 30px rgba(0,0,0,.35)}
+  .mobile-nav button{font-size:15px;border-bottom:1px solid var(--line)}
+  .mobile-nav button:last-child{border-bottom:0}
+
+  .hero{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    padding:42px 20px 28px;
+    gap:18px;
+  }
+  .hero-copy{max-width:none;text-align:center;order:1}
+  .hero-visual{order:2;height:300px;width:100%}
+  .hero h1{font-size:clamp(40px,11vw,52px);margin:12px 0}
+  .hero p{font-size:15px;line-height:1.9;margin-inline:auto}
+  .hero-buttons{justify-content:center;margin-top:22px}
+  .btn{padding:13px 16px;font-size:14px}
+  .quick{justify-content:center;margin-top:25px;gap:14px;font-size:12px}
+  .quick span{gap:4px}
+  .quick svg{width:16px}
+  .hero-image{width:min(330px,90%);height:270px;border-radius:25px}
+  .image-label{bottom:7px;font-size:10px}
+  .speed-lines{opacity:.35}
+
+  .announcement{padding:11px 16px;text-align:center}
+  .announcement p{font-size:11px}
+  .service-area{padding:13px 16px;font-size:12px;flex-wrap:wrap;text-align:center}
+  .section{padding:55px 18px}
+  .section h2{font-size:clamp(27px,8vw,38px)}
+  .section-head{margin-bottom:28px}
+  .card{padding:24px}
+  .coming{margin:28px 16px;padding:30px 20px}
+}
+
+@media (max-width: 420px){
+  .hero-buttons{flex-direction:column;align-items:stretch}
+  .hero-buttons .btn{width:100%}
+  .quick{gap:10px}
+}
