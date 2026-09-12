@@ -16,10 +16,9 @@ export const PAGE_PATHS: Record<Page, string> = {
   terms: "/terms"
 };
 
-export const pathToPage = (pathname: string): Page => {
+export const pathToPage = (pathname: string): Page | null => {
   const normalized = pathname.replace(/\/+$/, "") || "/";
-  const page = Object.entries(PAGE_PATHS).find(([, path]) => path === normalized)?.[0] as Page | undefined;
-  return page ?? "home";
+  return (Object.entries(PAGE_PATHS).find(([, path]) => path === normalized)?.[0] as Page | undefined) ?? null;
 };
 
 export type ContactItem = {
