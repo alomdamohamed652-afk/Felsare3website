@@ -18,6 +18,7 @@ import {
 const PHONE = primaryPhone();
 const PHONE_HREF = PHONE ? `tel:${PHONE.replace(/[^0-9+]/g, "")}` : "#contact";
 const WHATSAPP = primaryWhatsApp();
+const WHATSAPP_NUMBER = WHATSAPP ? WHATSAPP.value.replace(/[^0-9]/g, "") : "";
 
 function App(){
  const [page,setPage]=React.useState<Page>(() => pathToPage(window.location.pathname));
@@ -78,7 +79,7 @@ function Order(){
      "",
      "تم إنشاء هذه الرسالة من موقع فالسريع."
    ].filter(Boolean).join("\n");
-   window.open(`https://wa.me/${WHATSAPP.value}?text=${encodeURIComponent(message)}`,"_blank","noopener,noreferrer");
+   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank","noopener,noreferrer");
  };
  return <PageHero eyebrow="اطلب الآن" title={<>اطلبها… <strong>فالسريع.</strong></>} text="املأ بيانات طلبك وسيتم تجهيز رسالة منظمة تلقائيًا وفتح واتساب لإرسالها إلينا.">
    <section className="section order-section">
