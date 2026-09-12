@@ -10,7 +10,7 @@ export const PAGE_PATHS: Record<Page, string> = {
   support: "/support",
   inquiry: "/inquiry",
   complaint: "/complaint",
-  partner: "/partners",
+  partner: "/join-us/partner",
   contact: "/contact",
   privacy: "/privacy",
   terms: "/terms"
@@ -18,7 +18,8 @@ export const PAGE_PATHS: Record<Page, string> = {
 
 export const pathToPage = (pathname: string): Page => {
   const normalized = pathname.replace(/\/+$/, "") || "/";
-  return (Object.entries(PAGE_PATHS).find(([, path]) => path === normalized)?.[0] as Page) ?? "home";
+  const page = Object.entries(PAGE_PATHS).find(([, path]) => path === normalized)?.[0] as Page | undefined;
+  return page ?? "home";
 };
 
 export type ContactItem = {
