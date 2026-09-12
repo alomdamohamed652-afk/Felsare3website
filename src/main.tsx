@@ -111,7 +111,7 @@ function Order(){
 function WhatsAppForm({title,description,icon,children,onBuild}:{title:string,description:string,icon:React.ReactNode,children:React.ReactNode,onBuild:()=>string|null}){
  const [error,setError]=React.useState("");
  const submit=(e:React.FormEvent)=>{e.preventDefault();const message=onBuild();if(!message){setError("من فضلك املأ جميع البيانات المطلوبة.");return;}if(!sendWhatsApp(message)){setError("رقم واتساب غير متاح حاليًا.");return;}setError("");};
- return <PageHero eyebrow="تواصل معنا" title={<>{title} <strong>فالسريع.</strong></>} text={description}><section className="section order-section"><div className="order-intro">{icon}<div><h2>{title}</h2><p>املأ البيانات وسيتم فتح واتساب برسالة منظمة وجاهزة للإرسال.</p></div></div><form className="order-form" onSubmit={submit}>{children}{error&&<div className="form-error">{error}</div>}<button className="btn primary order-submit" type="submit"><MessageCircle/> إرسال عبر واتساب</button></form></section></PageHero>
+ return <div className="form-page"><section className="section order-section"><div className="order-intro">{icon}<div><span className="eyebrow">تواصل عبر واتساب</span><h2>{title}</h2><p>{description}</p><small>املأ البيانات ثم ستُفتح رسالة منظمة وجاهزة للمراجعة والإرسال.</small></div></div><form className="order-form" onSubmit={submit}>{children}{error&&<div className="form-error">{error}</div>}<button className="btn primary order-submit" type="submit"><MessageCircle/> إرسال عبر واتساب</button></form></section></div>
 }
 
 function Support(){
