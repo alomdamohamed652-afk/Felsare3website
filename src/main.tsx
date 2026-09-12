@@ -22,12 +22,13 @@ function App(){
  const [page,setPage]=React.useState<Page>(() => pathToPage(window.location.pathname));
  const [menu,setMenu]=React.useState(false);
  const [choice,setChoice]=React.useState<{page:Page;title:string;description:string}|null>(null);
- React.useEffect(()=>{document.title = page === "home" ? "فالسريع | اطلب… يوصلك فالسريع" : `فالسريع | ${{about:"عن فالسريع",services:"خدماتنا",order:"اطلب الآن",support:"الدعم",inquiry:"استفسار",complaint:"تقديم شكوى",partner:"الشراكة",join:"انضم إلينا",joinForm:"التقديم للعمل",contact:"تواصل معنا",privacy:"سياسة الخصوصية",terms:"الشروط والأحكام"}[page]}`;},[page]);
+ React.useEffect(()=>{document.title = page === "home" ? "فالسريع | كل اللي محتاجه يوصلك فالسريع" : `فالسريع | ${{about:"عن فالسريع",services:"خدماتنا",order:"اطلب الآن",support:"الدعم",inquiry:"استفسار",complaint:"تقديم شكوى",partner:"الشراكة",join:"انضم إلينا",joinForm:"التقديم للعمل",contact:"تواصل معنا",privacy:"سياسة الخصوصية",terms:"الشروط والأحكام"}[page]}`;},[page]);
  const nav:[Page,string][]=[["home","الرئيسية"],["about","عن فالسريع"],["services","خدماتنا"],["order","اطلب الآن"],["join","انضم إلينا"],["contact","تواصل معنا"]];
  const go=(p:Page)=>{
    const path = PAGE_PATHS[p];
    if (window.location.pathname !== path) window.history.pushState({ page: p }, "", path);
    setPage(p);
+   setChoice(null);
    setMenu(false);
    window.scrollTo({top:0,behavior:"smooth"});
  };
@@ -40,7 +41,7 @@ function App(){
  return <div className="app">
  <header className="nav"><a className="brand" href={PAGE_PATHS.home} onClick={(e)=>{e.preventDefault();go("home");}}><span className="brand-mark">F</span><span>فالسريع</span></a><nav>{nav.map(([p,n])=><a className={page===p?"active":""} key={p} href={PAGE_PATHS[p]} onClick={(e)=>{e.preventDefault();go(p);}}>{n}</a>)}</nav><div className="nav-actions"><a className="call-mini" href={PAGE_PATHS.order} onClick={(e)=>{e.preventDefault();go("order");}}><ClipboardList size={17}/> اطلب الآن</a><button className="menu" onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button></div></header>
  {menu&&<div className="mobile-nav">{nav.map(([p,n])=><a key={p} href={PAGE_PATHS[p]} onClick={(e)=>{e.preventDefault();go(p);}}>{n}</a>)}</div>}
- <main>{page==="home"&&<Home go={go} openChoice={setChoice}/>} {page==="about"&&<About/>} {page==="services"&&<Services/>} {page==="order"&&<Order/>} {page==="support"&&<Support/>} {page==="inquiry"&&<Inquiry/>} {page==="complaint"&&<Complaint/>} {page==="partner"&&<Partner/>} {page==="join"&&<Join openChoice={setChoice}/>} {page==="joinForm"&&<JoinForm/>} {page==="contact"&&<Contact openChoice={setChoice}/>} {page==="privacy"&&<Legal title="سياسة الخصوصية" type="privacy"/>} {page==="terms"&&<Legal title="الشروط والأحكام" type="terms"/>}</main>
+ <main key={page}>{page==="home"&&<Home go={go} openChoice={setChoice}/>} {page==="about"&&<About/>} {page==="services"&&<Services/>} {page==="order"&&<Order/>} {page==="support"&&<Support/>} {page==="inquiry"&&<Inquiry/>} {page==="complaint"&&<Complaint/>} {page==="partner"&&<Partner/>} {page==="join"&&<Join openChoice={setChoice}/>} {page==="joinForm"&&<JoinForm/>} {page==="contact"&&<Contact openChoice={setChoice}/>} {page==="privacy"&&<Legal title="سياسة الخصوصية" type="privacy"/>} {page==="terms"&&<Legal title="الشروط والأحكام" type="terms"/>}</main>
  <footer><div><a className="brand" href={PAGE_PATHS.home} onClick={(e)=>{e.preventDefault();go("home");}}><span className="brand-mark">F</span><span>فالسريع</span></a><p>كل اللي محتاجه… يوصلك فالسريع.</p></div><div className="footer-links">{nav.map(([p,n])=><a key={p} href={PAGE_PATHS[p]} onClick={(e)=>{e.preventDefault();go(p);}}>{n}</a>)}</div><div className="legal-links"><a href={PAGE_PATHS.privacy} onClick={(e)=>{e.preventDefault();go("privacy");}}>سياسة الخصوصية</a><span>•</span><a href={PAGE_PATHS.terms} onClick={(e)=>{e.preventDefault();go("terms");}}>الشروط والأحكام</a></div><small>© {new Date().getFullYear()} فالسريع — جميع الحقوق محفوظة</small></footer>
  {choice&&<ContactChoiceModal title={choice.title} description={choice.description} onClose={()=>setChoice(null)} onPhone={()=>{window.location.href=PHONE_HREF;}} onWhatsApp={()=>{const target=choice.page;setChoice(null);go(target);}}/>}
  </div>
