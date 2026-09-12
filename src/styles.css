@@ -173,3 +173,9 @@
 .action-card{font:inherit;text-align:right;color:inherit;cursor:pointer;width:100%}
 .section-head.compact{margin-bottom:32px}
 @media(max-width:600px){.choice-modal{padding:28px 20px;border-radius:22px}.choice-modal h2{font-size:25px}.choice-action{padding:15px}.choice-backdrop{padding:12px}.join-choice-card{padding:26px}}
+
+/* Lightweight WhatsApp workflow screens */
+.form-page{min-height:calc(100vh - 120px);display:flex;align-items:center;padding:54px 0;background:radial-gradient(circle at 50% 0,rgba(255,138,0,.07),transparent 38%)}
+.form-page .order-section{width:100%}
+.form-page .order-intro{margin-bottom:16px}
+.form-page .order-intro small{display:block;margin-top:9px;color:var(--muted);font-size:12px}
