@@ -1,10 +1,11 @@
-export type Page = "home" | "about" | "services" | "join" | "contact" | "privacy" | "terms";
+export type Page = "home" | "about" | "services" | "join" | "order" | "contact" | "privacy" | "terms";
 
 export const PAGE_PATHS: Record<Page, string> = {
   home: "/",
   about: "/about",
   services: "/services",
   join: "/join-us",
+  order: "/order",
   contact: "/contact",
   privacy: "/privacy",
   terms: "/terms"
