@@ -11,9 +11,9 @@ const SOCIALS: SocialItem[] = [
   // أضف روابط الصفحات الرسمية هنا لاحقًا.
 ];
 const CONTACTS: ContactItem[] = [
- {label:"الدعم والطلبات",value:"01000000000",type:"phone"},
- {label:"الدعم والطلبات",value:"01000000001",type:"phone"},
- {label:"واتساب فالسريع",value:"201000000002",type:"whatsapp"}
+ {label:"الدعم والطلبات",value:"01032789566",type:"phone"},
+ {label:"الدعم والطلبات",value:"01064589298",type:"phone"},
+ {label:"واتساب فالسريع",value:"201032789566",type:"whatsapp"}
 ];
 const PHONE = CONTACTS.find(x=>x.type==="phone")?.value ?? "";
 const cleanPhone=(v:string)=>v.replace(/[^0-9]/g,"");
