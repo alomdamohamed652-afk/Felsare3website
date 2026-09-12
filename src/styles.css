@@ -190,3 +190,13 @@
 .modal-form label{margin-bottom:14px}
 .modal-form .order-submit{width:100%;justify-content:center;margin-top:8px}
 @media(max-width:600px){.form-backdrop{padding:10px}.whatsapp-form-modal{padding:24px 16px}.modal-form-head{margin:4px 40px 18px 0;gap:11px}.modal-form-head h2{font-size:22px}.modal-form{max-height:68vh}.modal-form-head>svg{width:28px;height:28px}}
+
+/* Brand polish & motion */
+.brand-slogan{display:inline-flex;align-items:center;margin-top:4px;padding:8px 13px;border:1px solid rgba(255,138,0,.22);border-radius:999px;background:rgba(255,138,0,.06);color:#ffc37a;font-weight:800;font-size:13px;animation:fadeUp .7s ease both .25s}
+.hero-copy>*{animation:fadeUp .7s ease both}.hero-copy h1{animation-delay:.08s}.hero-copy p{animation-delay:.16s}.hero-buttons{animation-delay:.24s}.quick{animation-delay:.32s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.choice-modal{animation:modalIn .25s ease both}.choice-backdrop{animation:backdropIn .2s ease both}
+@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}@keyframes backdropIn{from{opacity:0}to{opacity:1}}
+.success-card{text-align:center;padding:38px 24px;border:1px solid rgba(255,138,0,.28);border-radius:22px;background:radial-gradient(circle at 50% 0,rgba(255,138,0,.12),transparent 48%),#111;animation:modalIn .35s ease both}
+.success-card>span{width:64px;height:64px;margin:auto;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--fire));color:#080808;font-size:34px;font-weight:900;box-shadow:0 12px 35px rgba(255,76,0,.22)}
+.success-card h3{font-size:25px;margin:17px 0 7px}.success-card p{max-width:520px;margin:0 auto 20px;color:var(--muted);line-height:1.9}
