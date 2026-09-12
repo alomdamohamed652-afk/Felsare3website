@@ -40,6 +40,13 @@ export const CONTACTS: ContactItem[] = [
 
 export const cleanPhone = (value: string) => value.replace(/[^0-9]/g, "");
 
+export const toEgyptInternationalPhone = (value: string) => {
+  const digits = cleanPhone(value);
+  if (digits.startsWith("20")) return digits;
+  if (digits.startsWith("0")) return `20${digits.slice(1)}`;
+  return digits;
+};
+
 export const contactHref = (contact: ContactItem) =>
   contact.type === "whatsapp"
     ? `https://wa.me/${cleanPhone(contact.value)}`
