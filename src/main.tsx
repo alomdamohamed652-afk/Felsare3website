@@ -10,6 +10,8 @@ import {
   contactHref,
   primaryPhone,
   primaryWhatsApp,
+  PAGE_PATHS,
+  pathToPage,
   type Page
 } from "./data/site";
 
@@ -17,9 +19,21 @@ const PHONE = primaryPhone();
 const WHATSAPP = primaryWhatsApp();
 
 function App(){
- const [page,setPage]=React.useState<Page>("home"); const [menu,setMenu]=React.useState(false);
+ const [page,setPage]=React.useState<Page>(() => pathToPage(window.location.pathname));
+ const [menu,setMenu]=React.useState(false);
  const nav:[Page,string][]=[["home","الرئيسية"],["about","عن فالسريع"],["services","خدماتنا"],["join","انضم إلينا"],["contact","تواصل معنا"]];
- const go=(p:Page)=>{setPage(p);setMenu(false);window.scrollTo({top:0,behavior:"smooth"});};
+ const go=(p:Page)=>{
+   const path = PAGE_PATHS[p];
+   if (window.location.pathname !== path) window.history.pushState({ page: p }, "", path);
+   setPage(p);
+   setMenu(false);
+   window.scrollTo({top:0,behavior:"smooth"});
+ };
+ React.useEffect(()=>{
+   const onPopState=()=>{setPage(pathToPage(window.location.pathname));setMenu(false);window.scrollTo({top:0,behavior:"auto"});};
+   window.addEventListener("popstate",onPopState);
+   return ()=>window.removeEventListener("popstate",onPopState);
+ },[]);
  return <div className="app">
  <header className="nav"><button className="brand" onClick={()=>go("home")}><span className="brand-mark">F</span><span>فالسريع</span></button><nav>{nav.map(([p,n])=><button className={page===p?"active":""} key={p} onClick={()=>go(p)}>{n}</button>)}</nav><div className="nav-actions"><a className="call-mini" href={PHONE ? "tel:"+PHONE : "#contact"}><Phone size={17}/> اطلب الآن</a><button className="menu" onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button></div></header>
  {menu&&<div className="mobile-nav">{nav.map(([p,n])=><button key={p} onClick={()=>go(p)}>{n}</button>)}</div>}
