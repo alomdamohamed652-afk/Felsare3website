@@ -1,10 +1,11 @@
-export type Page = "home" | "about" | "services" | "join" | "order" | "support" | "inquiry" | "complaint" | "partner" | "contact" | "privacy" | "terms";
+export type Page = "home" | "about" | "services" | "join" | "joinForm" | "order" | "support" | "inquiry" | "complaint" | "partner" | "contact" | "privacy" | "terms";
 
 export const PAGE_PATHS: Record<Page, string> = {
   home: "/",
   about: "/about",
   services: "/services",
   join: "/join-us",
+  joinForm: "/join-us/apply",
   order: "/order",
   support: "/support",
   inquiry: "/inquiry",
