@@ -1,4 +1,4 @@
-export type Page = "home" | "about" | "services" | "join" | "order" | "support" | "complaint" | "partner" | "contact" | "privacy" | "terms";
+export type Page = "home" | "about" | "services" | "join" | "order" | "support" | "inquiry" | "complaint" | "partner" | "contact" | "privacy" | "terms";
 
 export const PAGE_PATHS: Record<Page, string> = {
   home: "/",
@@ -7,6 +7,7 @@ export const PAGE_PATHS: Record<Page, string> = {
   join: "/join-us",
   order: "/order",
   support: "/support",
+  inquiry: "/inquiry",
   complaint: "/complaint",
   partner: "/partners",
   contact: "/contact",
