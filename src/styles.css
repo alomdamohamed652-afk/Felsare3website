@@ -119,3 +119,59 @@
   position:relative;
   z-index:1;
 }
+
+
+/* ===== Felsare3 visual refresh ===== */
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&display=swap');
+:root{--bg:#090a0c;--panel:#111215;--panel2:#17191d;--text:#f4f2ee;--muted:#a8a5a1;--orange:#ff8a00;--fire:#ff5200}
+body{font-family:Alexandria,Cairo,Arial,sans-serif;background:#090a0c}
+.nav{height:80px;background:rgba(9,10,12,.88);padding-inline:max(28px,6vw)}
+.brand{min-width:170px;font-size:0}
+.wordmark{display:inline-flex;align-items:center;direction:ltr;gap:0;position:relative;line-height:1;font-family:Cairo,Arial,sans-serif;font-size:31px;font-weight:900;letter-spacing:-2px;white-space:nowrap}
+.wordmark-fal{color:#f1f0ed}
+.wordmark-saree{color:#ff6900}
+.wordmark-speed{display:inline-flex;flex-direction:column;gap:4px;margin-inline-end:7px}
+.wordmark-speed b{display:block;height:4px;border-radius:99px;background:linear-gradient(90deg,#ff8a00,#ff5200)}
+.wordmark-speed b:nth-child(1){width:14px}.wordmark-speed b:nth-child(2){width:22px}.wordmark-speed b:nth-child(3){width:10px}
+.nav nav{gap:12px}
+.nav nav button{font-size:13px;padding:10px 9px}
+.call-mini{border-radius:12px;padding:11px 17px;font-size:13px;box-shadow:0 8px 24px rgba(255,98,0,.18)}
+.hero{min-height:650px;grid-template-columns:minmax(0,1.02fr) minmax(380px,.98fr);gap:58px;padding:58px max(30px,8vw) 52px;background:radial-gradient(circle at 38% 48%,rgba(255,85,0,.17),transparent 29%),linear-gradient(180deg,#0b0c0f,#090a0c)}
+.hero-copy{max-width:640px}
+.eyebrow{font-size:14px}
+.hero h1{font-size:clamp(44px,5.3vw,72px);line-height:1.28;letter-spacing:-2.5px;margin:14px 0 18px}
+.hero p{font-size:16px;line-height:2;max-width:570px}
+.hero-buttons{margin-top:25px}
+.btn{border-radius:14px;padding:15px 21px;font-size:14px}
+.quick{margin-top:28px;gap:22px}
+.hero-visual{height:510px;overflow:visible}
+.hero-image{position:relative;width:min(100%,510px);height:510px;object-fit:contain;border:0;border-radius:0;box-shadow:none;filter:drop-shadow(0 28px 35px rgba(0,0,0,.35))}
+.speed-lines{display:none}
+.hero-glow{background:radial-gradient(circle at 34% 52%,rgba(255,91,0,.2),transparent 25%),radial-gradient(circle at 66% 66%,rgba(255,53,0,.08),transparent 30%)}
+.announcement{background:linear-gradient(90deg,rgba(255,138,0,.08),rgba(255,82,0,.04),rgba(255,138,0,.08));padding:14px}
+.section{padding:82px max(24px,8vw)}
+.section-head h2{line-height:1.45;letter-spacing:-1px}
+.card,.service-card,.join-card,.contact-card{background:linear-gradient(145deg,#15171b,#0e0f11);border-color:rgba(255,255,255,.08)}
+.card{min-height:210px}
+.coming{background:radial-gradient(circle at 80% 45%,rgba(255,89,0,.2),transparent 34%),#101114;border-color:rgba(255,138,0,.18);overflow:hidden}
+.phone-mock{width:210px;height:350px;border:6px solid #24262a;border-radius:34px;background:#0b0b0d;box-shadow:0 24px 70px rgba(255,82,0,.15)}
+.phone-mock img{object-fit:cover;border-radius:28px}
+.cta{background:radial-gradient(circle at 50% 0%,rgba(255,92,0,.15),transparent 34%),linear-gradient(110deg,#120a06,#090a0c 55%,#120704)}
+footer .brand{min-width:auto}
+footer .brand .wordmark{font-size:27px}
+footer p{font-size:13px}
+@media (max-width:900px){
+ .nav{height:70px;padding-inline:18px}.brand{min-width:auto}.wordmark{font-size:25px}.nav-actions{margin-inline-start:auto}
+ .hero{display:grid;grid-template-columns:1fr;gap:8px;padding:44px 20px 36px;min-height:auto}
+ .hero-copy{order:1;text-align:center;margin:auto}.hero-visual{order:2;height:390px}.hero h1{font-size:clamp(40px,10vw,56px);letter-spacing:-2px}.hero p{font-size:14px;margin:auto}.hero-buttons,.quick{justify-content:center}
+ .hero-image{width:min(440px,100%);height:390px}
+}
+@media (min-width:601px) and (max-width:900px){
+ .hero{grid-template-columns:1.05fr .95fr;gap:28px;padding:48px 32px}.hero-copy{order:initial;text-align:initial}.hero-visual{order:initial;height:420px}.hero-image{height:420px}.hero-buttons,.quick{justify-content:flex-start}
+}
+@media (max-width:600px){
+ .nav{height:64px}.mobile-nav{top:64px}
+ .hero{display:flex;flex-direction:column}.hero-copy{order:1}.hero-visual{order:2;height:330px}.hero-image{height:330px;width:100%}
+ .wordmark{font-size:24px}.hero h1{line-height:1.3}.quick{gap:12px;font-size:11px}
+ .announcement p{font-size:10px}.section{padding:58px 18px}.coming{margin:34px 16px;padding:32px 20px}.phone-mock{width:180px;height:300px}
+}
