@@ -36,6 +36,32 @@ npm install
 npm run dev
 ```
 
+## أوامر التشغيل
+
+### Start / Development
+
+```bash
+npm run dev
+```
+
+بعدها افتح الرابط الذي يظهر في Terminal، وغالبًا:
+
+```text
+http://localhost:5173
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### فحص TypeScript
+
+```bash
+npm run check
+```
+
 ## البناء
 
 ```bash
