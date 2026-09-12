@@ -1,5 +1,20 @@
 export type Page = "home" | "about" | "services" | "join" | "contact" | "privacy" | "terms";
 
+export const PAGE_PATHS: Record<Page, string> = {
+  home: "/",
+  about: "/about",
+  services: "/services",
+  join: "/join-us",
+  contact: "/contact",
+  privacy: "/privacy",
+  terms: "/terms"
+};
+
+export const pathToPage = (pathname: string): Page => {
+  const normalized = pathname.replace(/\/+$/, "") || "/";
+  return (Object.entries(PAGE_PATHS).find(([, path]) => path === normalized)?.[0] as Page) ?? "home";
+};
+
 export type ContactItem = {
   label: string;
   value: string;
