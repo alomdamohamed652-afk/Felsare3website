@@ -211,3 +211,19 @@
 .order-form input:focus,.order-form textarea:focus,.order-form select:focus{border-color:rgba(255,138,0,.75);box-shadow:0 0 0 3px rgba(255,138,0,.09)}
 .form-error{animation:shake .28s ease both}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(4px)}75%{transform:translateX(-4px)}}
+
+/* Join & responsive final polish */
+.join-choice-card{position:relative;overflow:hidden;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.join-choice-card:focus-visible,.action-card:focus-visible,.choice-action:focus-visible,.btn:focus-visible{outline:3px solid rgba(255,138,0,.55);outline-offset:3px}
+.join-choice-card:hover{transform:translateY(-5px);border-color:rgba(255,138,0,.45);box-shadow:0 18px 38px rgba(0,0,0,.22)}
+.join-choice-card:hover svg{transform:scale(1.05)}
+.join-choice-card svg{transition:transform .22s ease}
+@media(max-width:700px){
+ .page-hero{padding-top:96px}
+ .page-hero h1{font-size:clamp(32px,10vw,46px)}
+ .action-grid{grid-template-columns:1fr}
+ .choice-modal{width:min(94vw,520px)}
+ .choice-action{min-height:72px}
+ .success-card{padding:30px 18px}
+ .form-grid{grid-template-columns:1fr}
+}
