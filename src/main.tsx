@@ -4,10 +4,8 @@ import { Phone, MessageCircle, Zap, ShieldCheck, MapPin, Store, Bike, Utensils, 
 import "./styles.css";
 
 import {
-  CONTACTS,
   SERVICE_AREA,
   SOCIALS,
-  contactHref,
   primaryPhone,
   primaryWhatsApp,
   PAGE_PATHS,
@@ -33,6 +31,7 @@ function App(){
    setMenu(false);
    window.scrollTo({top:0,behavior:"smooth"});
  };
+ React.useEffect(()=>{const onKey=(e:KeyboardEvent)=>{if(e.key==="Escape")setChoice(null);};window.addEventListener("keydown",onKey);return()=>window.removeEventListener("keydown",onKey);},[]);
  React.useEffect(()=>{
    const onPopState=()=>{setPage(pathToPage(window.location.pathname));setMenu(false);window.scrollTo({top:0,behavior:"auto"});};
    window.addEventListener("popstate",onPopState);
@@ -48,7 +47,7 @@ function App(){
 }
 function ContactChoiceModal({title,description,onClose,onPhone,onWhatsApp}:{title:string;description:string;onClose:()=>void;onPhone:()=>void;onWhatsApp:()=>void}){return <div className="choice-backdrop" role="presentation" onMouseDown={onClose}><div className="choice-modal" role="dialog" aria-modal="true" aria-label={title} onMouseDown={e=>e.stopPropagation()}><button className="choice-close" onClick={onClose} aria-label="إغلاق"><X/></button><span className="eyebrow">اختر طريقة التواصل</span><h2>{title}</h2><p>{description}</p><div className="choice-actions"><button className="choice-action phone-choice" onClick={onPhone}><Phone/><span><b>التواصل هاتفيًا</b><small>اتصل بنا مباشرة</small></span><ArrowLeft/></button><button className="choice-action whatsapp-choice" onClick={onWhatsApp}><MessageCircle/><span><b>التواصل عبر واتساب</b><small>املأ نموذجًا ورسالة جاهزة</small></span><ArrowLeft/></button></div></div></div>}
 function Home({go,openChoice}:{go:(p:Page)=>void;openChoice:(v:{page:Page;title:string;description:string})=>void}){return <>
-<section className="hero"><div className="hero-glow"></div><div className="hero-copy"><span className="eyebrow">قريبًا في مدينتك ⚡</span><h1>كل اللي محتاجه…<strong>يوصلك فالسريع.</strong></h1><div className="brand-slogan">فالسريع… اطلب، يوصلك فالسريع ⚡</div><p>خدمة توصيل محلية بسيطة وسريعة. حاليًا اطلب بسهولة عبر الهاتف أو واتساب.</p><div className="hero-buttons"><button className="btn primary" onClick={()=>openChoice({page:"order",title:"اطلب الآن",description:"اختر الطريقة المناسبة لإتمام طلبك."})}><ClipboardList/> ابدأ طلبك</button><a className="btn secondary" href={PHONE_HREF}><Phone/> التواصل هاتفيًا</a></div><div className="quick"><span><Zap/> أسرع</span><span><ShieldCheck/> موثوق</span><span><MapPin/> أقرب لك</span></div></div><div className="hero-visual"><div className="speed-lines"></div><img className="hero-image" src="/images/hero-placeholder.svg" alt="صورة توصيل فالسريع" /><div className="image-label">صورة مؤقتة قابلة للاستبدال</div></div></section>
+<section className="hero"><div className="hero-glow"></div><div className="hero-copy"><span className="eyebrow">قريبًا في مدينتك ⚡</span><h1>كل اللي محتاجه…<strong>يوصلك فالسريع.</strong></h1><div className="brand-slogan">فالسريع… كل اللي محتاجه يوصلك فالسريع ⚡</div><p>خدمة توصيل محلية بسيطة وسريعة. حاليًا اطلب بسهولة عبر الهاتف أو واتساب.</p><div className="hero-buttons"><button className="btn primary" onClick={()=>openChoice({page:"order",title:"اطلب الآن",description:"اختر الطريقة المناسبة لإتمام طلبك."})}><ClipboardList/> ابدأ طلبك</button><a className="btn secondary" href={PHONE_HREF}><Phone/> التواصل هاتفيًا</a></div><div className="quick"><span><Zap/> أسرع</span><span><ShieldCheck/> موثوق</span><span><MapPin/> أقرب لك</span></div></div><div className="hero-visual"><div className="speed-lines"></div><img className="hero-image" src="/images/hero-placeholder.svg" alt="صورة توصيل فالسريع" /><div className="image-label">صورة مؤقتة قابلة للاستبدال</div></div></section>
 <section className="announcement"><span>⚡</span><p>الموقع في مرحلته التعريفية حاليًا — التطبيق ونظام الطلبات قريبًا.</p></section><section className="service-area"><MapPin/><span>منطقة الخدمة:</span><b>{SERVICE_AREA}</b></section><section className="section"><div className="section-head"><span>لماذا فالسريع؟</span><h2>بسيطة… وسريعة… وقريبة منك.</h2></div><div className="grid three">{[[Zap,"سرعة","لأن وقتك مهم."],[ShieldCheck,"ثقة","نهتم بطلبك حتى يصل."],[MapPin,"قريب منك","خدمة محلية تعرف منطقتك."]].map(([Icon,title,txt]:any)=><article className="card" key={title}><Icon/><h3>{title}</h3><p>{txt}</p></article>)}</div></section>
 <section className="section dark-band"><div className="section-head"><span>خدماتنا</span><h2>إيه اللي نقدر نوصله؟</h2></div><div className="grid four">{[[Utensils,"مطاعم"],[Coffee,"كافيهات"],[ShoppingBag,"محلات"],[Package,"احتياجاتك"]].map(([Icon,title]:any)=><article className="service-card" key={title}><Icon/><b>{title}</b></article>)}</div><a className="text-link" href={PAGE_PATHS.services} onClick={(e)=>{e.preventDefault();go("services");}}>اكتشف خدماتنا <ArrowLeft size={18}/></a></section>
 <section className="coming"><div><span className="eyebrow">COMING SOON</span><h2>تطبيق فالسريع قريبًا 📱</h2><p>نعمل حاليًا على تجربة أسهل للطلبات والمتابعة.</p></div><div className="phone-mock"><div className="notch"></div><img src="/images/app-placeholder.svg" alt="معاينة تطبيق فالسريع قريبًا" /></div></section>
@@ -89,8 +88,8 @@ function Order(){
  };
  return <PageHero eyebrow="اطلب الآن" title={<>اطلبها… <strong>فالسريع.</strong></>} text="املأ بيانات طلبك وسيتم تجهيز رسالة منظمة تلقائيًا وفتح واتساب لإرسالها إلينا.">
    <section className="section order-section">
-    <div className="order-intro"><ClipboardList/><div><h2>طلب سريع عبر واتساب</h2><p>الموقع لا يحفظ طلبك حاليًا. بعد المراجعة، اضغط إرسال الطلب لفتح واتساب برسالة جاهزة.</p></div></div>
-    {sent?<div className="success-card"><span>✓</span><h3>تم تجهيز طلبك بنجاح</h3><p>تم فتح واتساب بالرسالة الجاهزة. بعد الضغط على إرسال داخل واتساب سيتم استلام طلبك ومراجعته، وسنرد عليك في أسرع وقت.</p><button className="btn secondary" onClick={()=>setSent(false)}>إرسال طلب آخر</button></div>:<form className="order-form" onSubmit={sendOrder}>
+    <div className="order-intro"><ClipboardList/><div><h2>طلب سريع عبر واتساب</h2><p>الموقع لا يحفظ طلبك حاليًا. راجع البيانات ثم افتح واتساب برسالة جاهزة.</p></div></div>
+    {sent?<div className="success-card"><span>✓</span><h3>تم تجهيز طلبك بنجاح</h3><p>تم فتح واتساب بالرسالة الجاهزة. راجع التفاصيل واضغط إرسال داخل واتساب لإتمام طلبك، ثم سيتم التواصل معك في أسرع وقت.</p><button className="btn secondary" onClick={()=>setSent(false)}>إرسال طلب آخر</button></div>:<form className="order-form" onSubmit={sendOrder}>
       <div className="form-grid">
        <label>الاسم الكامل<input value={name} onChange={e=>setName(e.target.value)} placeholder="اكتب اسمك" autoComplete="name"/></label>
        <label>رقم الهاتف<input value={phone} onChange={e=>setPhone(e.target.value)} placeholder="01XXXXXXXXX" inputMode="tel" autoComplete="tel"/></label>
@@ -102,7 +101,7 @@ function Order(){
       </div>
       <label>ملاحظات إضافية <span className="optional">(اختياري)</span><textarea value={notes} onChange={e=>setNotes(e.target.value)} placeholder="أي تفاصيل إضافية للمندوب..." rows={3}/></label>
       {error&&<div className="form-error">{error}</div>}
-      <button className="btn primary order-submit" type="submit"><MessageCircle/> إرسال الطلب عبر واتساب</button>
+      <button className="btn primary order-submit" type="submit"><MessageCircle/> متابعة الطلب عبر واتساب</button><p className="privacy-note">🔒 بياناتك لا يتم تخزينها حاليًا داخل الموقع، وتُستخدم فقط لتجهيز رسالة واتساب.</p>
     </form>
     <div className="order-steps"><span>1. املأ الطلب</span><ArrowLeft/><span>2. راجع الرسالة</span><ArrowLeft/><span>3. أرسلها على واتساب</span></div>
    </section>
@@ -113,7 +112,7 @@ function WhatsAppForm({title,description,icon,children,onBuild}:{title:string,de
  const [error,setError]=React.useState("");
  const [sent,setSent]=React.useState(false);
  const submit=(e:React.FormEvent)=>{e.preventDefault();const message=onBuild();if(!message){setError("من فضلك املأ جميع البيانات المطلوبة.");return;}if(!sendWhatsApp(message)){setError("رقم واتساب غير متاح حاليًا.");return;}setError("");setSent(true);};
- return <div className="form-page"><section className="section order-section"><div className="order-intro">{icon}<div><span className="eyebrow">تواصل عبر واتساب</span><h2>{title}</h2><p>{description}</p><small>املأ البيانات ثم ستُفتح رسالة منظمة وجاهزة للمراجعة والإرسال.</small></div></div>{sent?<div className="success-card"><span>✓</span><h3>تم تجهيز طلبك بنجاح</h3><p>تم فتح واتساب بالرسالة الجاهزة. بعد الضغط على إرسال داخل واتساب سيتم استلام طلبك ومراجعته، وسنرد عليك في أسرع وقت.</p><button className="btn secondary" onClick={()=>setSent(false)}>إرسال طلب آخر</button></div>:<form className="order-form" onSubmit={submit}>{children}{error&&<div className="form-error">{error}</div>}<button className="btn primary order-submit" type="submit"><MessageCircle/> إرسال عبر واتساب</button></form>}</section></div>
+ return <div className="form-page"><section className="section order-section"><div className="order-intro">{icon}<div><span className="eyebrow">تواصل عبر واتساب</span><h2>{title}</h2><p>{description}</p><small>املأ البيانات ثم ستُفتح رسالة منظمة وجاهزة للمراجعة والإرسال.</small></div></div>{sent?<div className="success-card"><span>✓</span><h3>تم تجهيز طلبك بنجاح</h3><p>تم فتح واتساب بالرسالة الجاهزة. بعد الضغط على إرسال داخل واتساب سيتم استلام طلبك ومراجعته، وسنرد عليك في أسرع وقت.</p><button className="btn secondary" onClick={()=>setSent(false)}>إرسال طلب آخر</button></div>:<form className="order-form" onSubmit={submit}>{children}{error&&<div className="form-error">{error}</div>}<button className="btn primary order-submit" type="submit"><MessageCircle/> متابعة عبر واتساب</button><p className="privacy-note">🔒 بياناتك لا يتم تخزينها حاليًا داخل الموقع، وتُستخدم فقط لتجهيز رسالة واتساب.</p></form>}</section></div>
 }
 
 function Support(){
