@@ -49,7 +49,7 @@ export const toEgyptInternationalPhone = (value: string) => {
 
 export const contactHref = (contact: ContactItem) =>
   contact.type === "whatsapp"
-    ? `https://wa.me/${cleanPhone(contact.value)}`
+    ? `https://wa.me/${toEgyptInternationalPhone(contact.value)}`
     : `tel:${cleanPhone(contact.value)}`;
 
 export const primaryPhone = () =>
