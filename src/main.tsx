@@ -105,7 +105,7 @@ function Order(){
       <label>ملاحظات إضافية <span className="optional">(اختياري)</span><textarea value={notes} onChange={e=>setNotes(e.target.value)} placeholder="أي تفاصيل إضافية للمندوب..." rows={3}/></label>
       {error&&<div className="form-error">{error}</div>}
       <button className="btn primary order-submit" type="submit"><MessageCircle/> متابعة الطلب عبر واتساب</button><p className="privacy-note">🔒 بياناتك لا يتم تخزينها حاليًا داخل الموقع، وتُستخدم فقط لتجهيز رسالة واتساب.</p>
-    </form>
+    </form>}
     <div className="order-steps"><span>1. املأ الطلب</span><ArrowLeft/><span>2. راجع الرسالة</span><ArrowLeft/><span>3. أرسلها على واتساب</span></div>
    </section>
  </PageHero>
