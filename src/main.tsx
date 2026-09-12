@@ -22,6 +22,7 @@ const WHATSAPP = primaryWhatsApp();
 function App(){
  const [page,setPage]=React.useState<Page>(() => pathToPage(window.location.pathname));
  const [menu,setMenu]=React.useState(false);
+ React.useEffect(()=>{document.title = page === "home" ? "فالسريع | كل اللي محتاجه يوصلك" : `فالسريع | ${{about:"عن فالسريع",services:"خدماتنا",join:"انضم إلينا",contact:"تواصل معنا",privacy:"سياسة الخصوصية",terms:"الشروط والأحكام"}[page]}`;},[page]);
  const nav:[Page,string][]=[["home","الرئيسية"],["about","عن فالسريع"],["services","خدماتنا"],["join","انضم إلينا"],["contact","تواصل معنا"]];
  const go=(p:Page)=>{
    const path = PAGE_PATHS[p];
