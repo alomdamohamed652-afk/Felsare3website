@@ -22,7 +22,7 @@ function App(){
  const [page,setPage]=React.useState<Page|null>(() => pathToPage(window.location.pathname));
  const [menu,setMenu]=React.useState(false);
  const [choice,setChoice]=React.useState<{page:Page;title:string;description:string}|null>(null);
- React.useEffect(()=>{document.title = page === "home" ? "فالسريع | كل اللي محتاجه يوصلك فالسريع" : `فالسريع | ${{about:"عن فالسريع",services:"خدماتنا",order:"اطلب الآن",support:"الدعم",inquiry:"استفسار",complaint:"تقديم شكوى",partner:"الشراكة",join:"انضم إلينا",joinForm:"التقديم للعمل",contact:"تواصل معنا",privacy:"سياسة الخصوصية",terms:"الشروط والأحكام"}[page]}`;},[page]);
+ React.useEffect(()=>{const titles:Record<Page,string>={home:"كل اللي محتاجه يوصلك فالسريع",about:"عن فالسريع",services:"خدماتنا",order:"اطلب الآن",support:"الدعم",inquiry:"استفسار",complaint:"تقديم شكوى",partner:"الشراكة",join:"انضم إلينا",joinForm:"التقديم للعمل",contact:"تواصل معنا",privacy:"سياسة الخصوصية",terms:"الشروط والأحكام"};document.title=page?`فالسريع | ${titles[page]}`:"فالسريع | الصفحة غير موجودة";},[page]);
  const nav:[Page,string][]=[["home","الرئيسية"],["about","عن فالسريع"],["services","خدماتنا"],["order","اطلب الآن"],["join","انضم إلينا"],["contact","تواصل معنا"]];
  const go=(p:Page)=>{
    const path = PAGE_PATHS[p];
