@@ -101,3 +101,21 @@
   .hero-copy{order:1;text-align:center}
   .hero-visual{order:2}
 }
+
+
+/* Hero glow must not participate in the CSS grid.
+   It was creating an extra grid cell and pushing the visual to a new row. */
+.hero-glow{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(circle at 72% 48%, rgba(255,102,0,.16), transparent 24%),
+    radial-gradient(circle at 82% 72%, rgba(255,55,0,.08), transparent 28%);
+}
+.hero-copy,
+.hero-visual{
+  position:relative;
+  z-index:1;
+}
